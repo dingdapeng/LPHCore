@@ -5,4 +5,5 @@ ASP.NET Core
 LPHCore.API --数据接口（暂无）   
 LPHCore.Admin --后台程序  
 LPHCore.Model --实体数据   
+LPHdb.sql --数据库脚本
 
