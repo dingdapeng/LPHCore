@@ -1,0 +1,13 @@
+﻿@model IEnumerable<LPHCore.Model.SysMenu>
+
+<div class="col-sm-3 col-md-2 sidebar">
+    @foreach (var Parentitem in Model.Where(x => x.ParentId == 0))
+    {
+        <ul class="nav nav-sidebar">
+            @foreach (var Childitem in Model.Where(x => x.ParentId == Parentitem.Id))
+            {
+                <li><a href="@Childitem.Url">@Childitem.MenuName <span class="sr-only">(current)</span></a></li>
+            }
+        </ul>
+    }
+</div>

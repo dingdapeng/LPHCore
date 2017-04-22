@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26403.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LPHCore.Admin", "LPHCore.Admin\LPHCore.Admin.csproj", "{495F9E06-C33C-4074-81AF-393BDE2B318B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LPHCore.Model", "LPHCore.Model\LPHCore.Model.csproj", "{5EC6AA70-8754-4CD3-A8CF-8E20BB11F4BD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LPHCore.API", "LPHCore.API\LPHCore.API.csproj", "{4EC0860A-A1BA-46AB-A20B-8C0E086529DF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{495F9E06-C33C-4074-81AF-393BDE2B318B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{495F9E06-C33C-4074-81AF-393BDE2B318B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{495F9E06-C33C-4074-81AF-393BDE2B318B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{495F9E06-C33C-4074-81AF-393BDE2B318B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5EC6AA70-8754-4CD3-A8CF-8E20BB11F4BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5EC6AA70-8754-4CD3-A8CF-8E20BB11F4BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5EC6AA70-8754-4CD3-A8CF-8E20BB11F4BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5EC6AA70-8754-4CD3-A8CF-8E20BB11F4BD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4EC0860A-A1BA-46AB-A20B-8C0E086529DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4EC0860A-A1BA-46AB-A20B-8C0E086529DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4EC0860A-A1BA-46AB-A20B-8C0E086529DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4EC0860A-A1BA-46AB-A20B-8C0E086529DF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
