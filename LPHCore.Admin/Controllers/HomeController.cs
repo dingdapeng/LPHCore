@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Http;
 
 namespace LPHCore.Admin.Controllers
 {
@@ -10,6 +11,10 @@ namespace LPHCore.Admin.Controllers
     {
         public IActionResult Index()
         {
+            if (string.IsNullOrEmpty(HttpContext.Session.GetString("UserName")))
+            {
+                return RedirectToAction("Login", "Account");
+            }
             return View();
         }
 

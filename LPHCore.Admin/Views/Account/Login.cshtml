@@ -1,0 +1,41 @@
+﻿@using LPHCore.Admin.Models
+@model LoginViewModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>登陆页</title>
+    <environment names="Development">
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+        <link rel="stylesheet" href="~/css/sitelogin.css" />
+    </environment>
+</head>
+<body>
+    <div class="container">
+        <form asp-controller="Account" asp-action="Login" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post" class="form-signin">
+            @Html.AntiForgeryToken()
+            <h2 class="form-signin-heading">请登陆</h2>
+
+            <input type="text" id="txt_UserName" name="UserName" class="form-control" placeholder="用户名" required autofocus>
+
+            <input type="password" id="txt_Password" name="Password" class="form-control" placeholder="密码" required>
+
+            <input type="checkbox" id="ck_RememberMe" name="RememberMe" value="true" />
+            <label for="ck_RememberMe">下次自动登陆</label>
+
+            <button class="btn btn-lg btn-primary btn-block" type="submit">登陆</button>
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        </form>
+
+    </div>
+    <environment names="Development">
+        <script src="~/lib/jquery/dist/jquery.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+    </environment>
+</body>
+</html>

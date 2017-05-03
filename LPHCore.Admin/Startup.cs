@@ -28,20 +28,30 @@ namespace LPHCore.Admin
 
         public IConfigurationRoot Configuration { get; }
 
-
+        //注册服务
         public void ConfigureServices(IServiceCollection services)
         {
 
             services.AddMvc();
+
             //添加编码
             services.AddSingleton(HtmlEncoder.Create(UnicodeRanges.All));
-            //注册连接数据库
+
+            //连接数据库
             var connection = Configuration.GetConnectionString("LPHdbConnection");
             services.AddDbContext<LPHdbContext>(options => options.UseSqlServer(connection));
 
+            //Session服务
+            services.AddSession();
+
+            //授权
+            services.AddAuthorization();
+
+
+
         }
 
-
+        //设置请求管道
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
@@ -49,21 +59,25 @@ namespace LPHCore.Admin
 
             if (env.IsDevelopment())
             {
+                //开发环境异常处理
                 app.UseDeveloperExceptionPage();
                 app.UseBrowserLink();
             }
             else
             {
+                //生产环境异常处理
                 app.UseExceptionHandler("/Home/Error");
             }
-
+            //使用静态文件
             app.UseStaticFiles();
-
+            //Session
+            app.UseSession();
+            //使用Mvc，设置默认路由为系统登录
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    template: "{controller=Account}/{action=Login}/{id?}");
             });
         }
     }
