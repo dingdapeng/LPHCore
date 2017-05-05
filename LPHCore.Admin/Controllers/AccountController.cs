@@ -21,7 +21,7 @@ namespace LPHCore.Admin.Controllers
         }
 
 
-
+        [Authorize]
         public IActionResult Login(string returnUrl = null)
         {
             ViewData["ReturnUrl"] = returnUrl;
@@ -29,7 +29,7 @@ namespace LPHCore.Admin.Controllers
         }
 
         [HttpPost]
-        [AllowAnonymous]
+        [AllowAnonymous]//允许非身份验证用户进行操作
         [ValidateAntiForgeryToken]
         public IActionResult Login(LoginViewModel model, string returnUrl)
         {

@@ -61,7 +61,6 @@ namespace LPHCore.Admin
             {
                 //开发环境异常处理
                 app.UseDeveloperExceptionPage();
-                app.UseBrowserLink();
             }
             else
             {
@@ -72,6 +71,7 @@ namespace LPHCore.Admin
             app.UseStaticFiles();
             //Session
             app.UseSession();
+
             //使用Mvc，设置默认路由为系统登录
             app.UseMvc(routes =>
             {
