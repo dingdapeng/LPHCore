@@ -11,10 +11,10 @@ namespace LPHCore.Admin.Controllers
     {
         public IActionResult Index()
         {
-            if (string.IsNullOrEmpty(HttpContext.Session.GetString("UserName")))
-            {
-                return RedirectToAction("Login", "Account");
-            }
+            //if (string.IsNullOrEmpty(HttpContext.Session.GetString("UserName")))
+            //{
+            //    return RedirectToAction("Login", "Account");
+            //}
             return View();
         }
 
