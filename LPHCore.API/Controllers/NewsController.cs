@@ -13,8 +13,6 @@ namespace LPHCore.API.Controllers
     [Route("api/News")]
     public class NewsController : Controller
     {
-        LPHdbContext db = new LPHdbContext();
-
         private readonly LPHdbContext _context;
 
         public NewsController(LPHdbContext context)
@@ -25,16 +23,31 @@ namespace LPHCore.API.Controllers
         [HttpGet]
         public object GetNews()
         {
+
+            //基本查询
+            var query1 = from n in _context.News
+                         where n.Status == 0
+                         orderby n.Id descending
+                         select n;
+
+            //lambda表达式
+            var query2 = _context.News.Where(x => x.Status == 0);
+
             //Linq left join 查询
-            var query = from n in db.News
-                        join c in db.NewsCategory on n.CategoryId equals c.Id into x
-                        from p in x.DefaultIfEmpty()
-                        select new
-                        {
-                            Title = n.Title,
-                            Name = p == null ? string.Empty : p.Name
-                        };
-            return query;
+            var query3 = from n in _context.News
+                         join c in _context.NewsCategory on n.CategoryId equals c.Id into x
+                         select x;
+
+            //from p in x.DefaultIfEmpty()
+            //select new
+            //{
+            //    Title = n.Title,
+            //    Name = p == null ? string.Empty : p.Name
+            //};
+
+            return query3;
+
+
 
         }
 

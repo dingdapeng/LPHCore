@@ -18,7 +18,7 @@ namespace LPHCore.Model
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            #warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
+            //#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
             optionsBuilder.UseSqlServer(@"server=(localdb)\MSSQLLocalDB;database=LPHdb;uid=sa;pwd=123");
         }
 
@@ -57,8 +57,6 @@ namespace LPHCore.Model
 
             modelBuilder.Entity<NewsCategory>(entity =>
             {
-                entity.ToTable("News_Category");
-
                 entity.Property(e => e.Id).HasColumnName("ID");
 
                 entity.Property(e => e.Name)
@@ -95,8 +93,6 @@ namespace LPHCore.Model
 
             modelBuilder.Entity<SysPermissinSysMenu>(entity =>
             {
-                entity.ToTable("SysPermissin_SysMenu");
-
                 entity.Property(e => e.Id).HasColumnName("ID");
 
                 entity.Property(e => e.SysMenuId).HasColumnName("SysMenuID");
@@ -127,8 +123,6 @@ namespace LPHCore.Model
 
             modelBuilder.Entity<SysRoleSysPermissin>(entity =>
             {
-                entity.ToTable("SysRole_SysPermissin");
-
                 entity.Property(e => e.Id).HasColumnName("ID");
 
                 entity.Property(e => e.SysPermissinId).HasColumnName("SysPermissinID");
@@ -173,8 +167,6 @@ namespace LPHCore.Model
 
             modelBuilder.Entity<SysUserSysRole>(entity =>
             {
-                entity.ToTable("SysUser_SysRole");
-
                 entity.Property(e => e.Id).HasColumnName("ID");
 
                 entity.Property(e => e.SysRoleId).HasColumnName("SysRoleID");
