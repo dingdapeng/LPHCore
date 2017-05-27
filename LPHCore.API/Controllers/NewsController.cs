@@ -23,35 +23,12 @@ namespace LPHCore.API.Controllers
         [HttpGet]
         public object GetNews()
         {
-
-            //基本查询
-            var query1 = from n in _context.News
-                         where n.Status == 0
-                         orderby n.Id descending
-                         select n;
-
-            //lambda表达式
-            var query2 = _context.News.Where(x => x.Status == 0);
-
-            //Linq left join 查询
-            var query3 = from n in _context.News
-                         join c in _context.NewsCategory on n.CategoryId equals c.Id into x
-                         select x;
-
-            //from p in x.DefaultIfEmpty()
-            //select new
-            //{
-            //    Title = n.Title,
-            //    Name = p == null ? string.Empty : p.Name
-            //};
-
-            return query3;
-
-
-
+            var q = from n in _context.News
+                    select new { n.Id, n.Title, n.CategoryId, n.Category.Name };
+            return q;
         }
 
-        // GET: api/News/5
+
         [HttpGet("{id}")]
         public async Task<IActionResult> GetNews([FromRoute] int id)
         {
@@ -70,7 +47,6 @@ namespace LPHCore.API.Controllers
             return Ok(news);
         }
 
-        // PUT: api/News/5
         [HttpPut("{id}")]
         public async Task<IActionResult> PutNews([FromRoute] int id, [FromBody] News news)
         {
@@ -105,7 +81,6 @@ namespace LPHCore.API.Controllers
             return NoContent();
         }
 
-        // POST: api/News
         [HttpPost]
         public async Task<IActionResult> PostNews([FromBody] News news)
         {
@@ -120,7 +95,6 @@ namespace LPHCore.API.Controllers
             return CreatedAtAction("GetNews", new { id = news.Id }, news);
         }
 
-        // DELETE: api/News/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteNews([FromRoute] int id)
         {
